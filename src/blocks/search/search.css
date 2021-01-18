@@ -1,0 +1,149 @@
+.search {
+  background-image: url('../../images/search-cover.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 160px 0 80px;
+  box-sizing: border-box;
+}
+
+.search__container {
+  max-width: 545px;
+  margin: 0 auto;
+}
+
+.search__title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.search__subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.search__form {
+  display: flex;
+}
+
+.search__input {
+  height: 4rem;
+  border: 1px solid #D1D2D6;
+  border-radius: 100px;
+  padding: 21px 24px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.btn {
+  height: 4rem;
+  border: 1px solid #2F71E5;
+  border-radius: 100px;
+  box-sizing: border-box;
+  background: #2F71E5;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.search__btn {
+  width: 168px;
+  margin-left: -60px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  background: #347EFF;
+  transition: .5s;
+}
+
+.btn:active {
+  background: #2A65CC;
+}
+
+.btn:disabled {
+  background: #E6E8EB;
+  color: #B6BCBF;
+  cursor: auto;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    padding: 104px 4.8% 3rem;
+  }
+
+  .search__container {
+    max-width: 452px;
+  }
+
+  .search__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 1rem;
+  }
+
+  .search__subtitle {
+    margin-bottom: 3rem;
+  }
+
+  .search__btn {
+    width: 160px;
+  }
+
+  .search__input {
+    height: 56px;
+  }
+
+  .btn {
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .search {
+    padding-top: 86px;
+    padding-bottom: 2rem;
+  }
+
+  .search__form {
+    flex-direction: column;
+  }
+
+  .search__input {
+    margin-bottom: 1rem;
+  }
+
+  .search__btn {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search__subtitle {
+    margin-bottom: 120px;
+  }
+}

@@ -1,0 +1,22 @@
+@import url('./__preloader/results__preloader.css');
+@import url('./__fail/results__fail.css');
+@import url('./__articles/results__articles.css');
+
+.results {
+  background: #F5F6F7;
+  padding: 80px 7% 80px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .results {
+    padding: 40px 7% 40px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .results {
+    padding: 2rem 5% 2rem;
+  }
+}
+

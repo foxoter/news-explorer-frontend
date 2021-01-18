@@ -1,0 +1,40 @@
+.results__fail {
+  display: none;
+  max-width: 345px;
+  margin: 0 auto;
+}
+
+.results__fail-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.results__fail-title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: #1A1B22;
+  margin-bottom: 1rem;
+}
+
+.results__fail-message {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #B6BCBF;
+}
+
+@media screen and (max-width: 768px) {
+  .results__fail-title {
+    font-size: 16px;
+    margin-bottom: .5rem;
+  }
+
+  .results__fail-message {
+    font-size: 14px;
+  }
+}

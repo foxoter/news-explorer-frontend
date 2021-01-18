@@ -8,10 +8,14 @@ const isDev = process.env.NODE_ENV === 'development';
 // const WebpackMd5Hash = require('webpack-md5-hash'); не работает с Webpack 5
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: {
+    main: './src/index.js',
+    bookmarks: './src/bookmarks.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
+    publicPath: '',
+    filename: './scripts/[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -23,7 +27,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+          (isDev ? 'style-loader' : {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
+          }),
           'css-loader',
           'postcss-loader',
         ],
@@ -44,8 +53,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               esModule: false,
-              name: 'images/[name].[ext]',
-              publicPath: './',
+              name: './images/[name].[ext]',
+              // publicPath: './',
             },
           },
           {
@@ -80,11 +89,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/index.html',
+      template: './src/pages/index.html',
       filename: 'index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/pages/bookmarks.html',
+      filename: 'bookmarks.html',
+      chunks: ['bookmarks'],
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'styles/[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,

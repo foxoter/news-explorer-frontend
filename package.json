@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/foxoter/news-explorer-frontend/issues"
   },
-  "homepage": "https://foxoter.github.io/news-explorer-frontend/",
+  "homepage": "https://foxoter.github.io/news-explorer-frontend",
   "devDependencies": {
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
