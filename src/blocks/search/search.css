@@ -45,6 +45,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
+  caret-color: #2F71E5;
 }
 
 .search__input:focus {

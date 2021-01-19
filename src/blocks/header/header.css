@@ -59,19 +59,19 @@
 }
 
 .header__button_type-burger-white {
-  background: transparent url("../../images/menu-show-white.svg");
+  background: transparent url("../../images/menu-show-white.svg") center no-repeat;
 }
 
 .header__button_type-cross-white {
-  background: transparent url("../../images/menu-hide-white.svg");
+  background: transparent url("../../images/menu-hide-white.svg") center no-repeat;
 }
 
 .header__button_type-burger-black {
-  background: transparent url("../../images/menu-show-black.svg");
+  background: transparent url("../../images/menu-show-black.svg") center no-repeat;
 }
 
 .header__button_type-cross-black {
-  background: transparent url("../../images/menu-hide-black.svg");
+  background: transparent url("../../images/menu-hide-black.svg") center no-repeat;
 }
 
 .header__navigation.header__navigation_state-shown {
