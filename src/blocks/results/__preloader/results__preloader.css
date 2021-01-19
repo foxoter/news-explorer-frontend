@@ -1,0 +1,32 @@
+.results__preloader {
+  display: none;
+}
+
+.results__preloader-ring {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #444;
+  border-bottom-color: #888;
+
+  border-radius: 50%;
+  margin: auto;
+
+  animation: spin .75s infinite linear;
+}
+
+.results__preloader-message {
+  margin-top: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #B6BCBF;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
