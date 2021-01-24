@@ -1,41 +1,102 @@
 import './styles/index.css';
+import MainApi from './js/api/MainApi';
+import NewsApi from './js/api/NewsApi';
+import Header from './js/components/Header';
+import Popup from './js/components/Popup';
+import Form from './js/components/Form';
+import { mainApiConfig } from './js/constants/apiConfigs';
+import { errorTexts } from './js/constants/errors';
+import { errorsTranslator } from './js/utils/helpers';
 
-const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__hide-btn');
-const openButton = document.querySelector('.header__link-auth');
-const searchButton = document.querySelector('.search__btn');
-const searchFail = document.querySelector('.results__fail');
-const searchPreloader = document.querySelector('.results__preloader');
-const menuButton = document.querySelector('.header__button');
-const header = document.querySelector('.header');
-const headerMenu = document.querySelector('.header__navigation');
+import {
+  popupSelectors,
+  formSelectors,
+  headerSelectors,
+} from './js/constants/indexSelectors';
 
-function toggleMenu() {
-  header.classList.toggle('header_background-on');
-  headerMenu.classList.toggle('header__navigation_state-shown');
-  menuButton.classList.toggle('header__button_type-cross-white');
+// classes instances
+const popup = new Popup(popupSelectors);
+const signInForm = new Form(formSelectors.signInForm, errorTexts);
+const signUpForm = new Form(formSelectors.signUpForm, errorTexts);
+const mainApi = new MainApi(mainApiConfig);
+const header = new Header(headerSelectors);
+
+// popups rendering
+popup.openButton.addEventListener('click', popup.open);
+popup.closeButton.addEventListener('click', () => {
+  signInForm.reset();
+  signUpForm.reset();
+  popup.close();
+});
+popup.signUpLink.addEventListener('click', () => {
+  signInForm.reset();
+  popup.clearContent();
+  popup.setContent(popup.signUpPopup);
+});
+popup.signInLink.addEventListener('click', () => {
+  signUpForm.reset();
+  popup.clearContent();
+  popup.setContent(popup.signInPopup);
+});
+popup.successToSignIn.addEventListener('click', () => {
+  popup.clearContent();
+  popup.setContent(popup.signInPopup);
+});
+
+// login and logout
+function getUser() {
+  return mainApi.getUser()
+    .then((user) => {
+      localStorage.setItem('user', user.name);
+      header.render(user.name);
+    })
+    .catch((err) => console.log(err));
 }
 
-function closePopup() {
-  popup.setAttribute('style', 'display: none');
+function logout() {
+  mainApi.logout()
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 }
+signUpForm.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const body = {
+    email: event.target.elements[0].value,
+    password: event.target.elements[1].value,
+    name: event.target.elements[2].value,
+  };
+  mainApi.signup(body)
+    .then(() => {
+      signUpForm.reset();
+      popup.clearContent();
+      popup.setContent(popup.successMessage);
+    })
+    .catch((err) => {
+      signUpForm.setServerError(errorsTranslator(err.message));
+    });
+});
 
-function openPopup() {
-  popup.setAttribute('style', 'display: flex');
-}
+signInForm.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const body = {
+    email: event.target.elements[0].value,
+    password: event.target.elements[1].value,
+  };
+  mainApi.signin(body)
+    .then((res) => {
+      signInForm.reset();
+      popup.close();
+      getUser();
+    })
+    .catch((err) => {
+      signInForm.setServerError(errorsTranslator(err.message));
+    });
+});
+header.headerMenuButton.addEventListener('click', header.toggleMenu);
+header.logoutLink.addEventListener('click', () => {
+  logout();
+  localStorage.clear();
+  header.render('');
+});
 
-function toggleResultViews() {
-  searchPreloader.setAttribute('style', 'display: block');
-  setTimeout(() => {
-    searchPreloader.setAttribute('style', 'display: none');
-    searchFail.setAttribute('style', 'display: block');
-  }, 2000);
-  setTimeout(() => {
-    searchFail.setAttribute('style', 'display: none');
-  }, 3000);
-}
-
-openButton.addEventListener('click', openPopup);
-closeButton.addEventListener('click', closePopup);
-searchButton.addEventListener('click', toggleResultViews);
-menuButton.addEventListener('click', toggleMenu);
+header.render(localStorage.getItem('user'));
