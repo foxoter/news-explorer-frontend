@@ -2,6 +2,10 @@
   display: none;
 }
 
+.results__preloader_state-shown {
+  display: block;
+}
+
 .results__preloader-ring {
   display: block;
   width: 50px;

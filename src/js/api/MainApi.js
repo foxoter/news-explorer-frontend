@@ -2,6 +2,8 @@ export default class MainApi {
   constructor(config) {
     this.url = config.url;
     this.headers = config.headers;
+    this.saveArticle = this.saveArticle.bind(this);
+    this.deleteArticle = this.deleteArticle.bind(this);
   }
 
   signup(body) {

@@ -3,6 +3,7 @@ export const signInPopup = document.querySelector('.signin');
 export const signUpPopup = document.querySelector('.signup');
 export const successMessage = document.querySelector('.auth-success');
 
+// header selectors
 export const headerSelectors = {
   header: document.querySelector('.header'),
   headerMenu: document.querySelector('.header__navigation'),
@@ -12,6 +13,7 @@ export const headerSelectors = {
   bookmarksLink: document.querySelector('.header__nav-item_route-bookmarks'),
 };
 
+// popup selectors
 export const popupSelectors = {
   popupWindow: document.querySelector('.popup'),
   closeButton: document.querySelector('.popup__hide-btn'),
@@ -29,4 +31,15 @@ export const popupSelectors = {
 export const formSelectors = {
   signInForm: signInPopup.querySelector('form'),
   signUpForm: signUpPopup.querySelector('form'),
+};
+
+// results block selectors
+export const resultsSelectors = {
+  resultsShell: document.querySelector('.results'),
+  preloaderBlock: document.querySelector('.results__preloader'),
+  failBlock: document.querySelector('.results__fail'),
+  failTitle: document.querySelector('.results__fail-title'),
+  articlesSection: document.querySelector('.results__articles'),
+  articlesContainer: document.querySelector('.results__container'),
+  showMoreButton: document.querySelector('.results__expand'),
 };

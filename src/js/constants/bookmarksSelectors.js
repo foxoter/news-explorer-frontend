@@ -8,9 +8,14 @@ export const headerSelectors = {
 
 export const leadSelectors = {
   leadTitle: document.querySelector('.lead__title'),
+  leadText: document.querySelector('.lead__text'),
   userName: document.querySelector('#username'),
   bookMarksCount: document.querySelector('#bookmarks-count'),
   keyWordOne: document.querySelector('#keyword-1'),
-  keyWordTwo: document.querySelector('#keyword-2'),
-  keyWordCount: document.querySelector('#keywords-count'),
+};
+
+export const resultsSelectors = {
+  resultsShell: document.querySelector('.results'),
+  articlesSection: document.querySelector('.results__articles'),
+  articlesContainer: document.querySelector('.results__container'),
 };

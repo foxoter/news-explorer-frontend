@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+.results__fail_state-shown {
+  display: block;
+}
+
 .results__fail-icon {
   display: block;
   margin: 0 auto;
