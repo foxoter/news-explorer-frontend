@@ -1,5 +1,9 @@
 .results__articles {
-  /*display: none;*/
+  display: none;
+}
+
+.results__articles_state-shown {
+  display: block;
 }
 
 .results__subtitle {
@@ -28,6 +32,7 @@
   background-image: url("../../../images/article-cover-3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -74,21 +79,23 @@
   border-radius: 10px;
 }
 
-.results__icon_type-bookmark {
+.results__icon:hover {
+  cursor: pointer;
+}
+
+.results__icon_type-passive {
   background-image: url("../../../images/bookmark-normal.png");
 }
 
-.results__icon_type-bookmark:hover {
+.results__icon_type-active {
   background-image: url("../../../images/bookmark-hover.png");
-  transition: .5s;
 }
 
-.results__icon_type-bookmark:active {
+.results__icon_type-saved {
   background-image: url("../../../images/bookmark-marked.png");
-  transition: .5s;
 }
 
-.results__icon:hover ~ .results__warning {
+.results__icon_type-passive:hover ~ .results__warning {
   opacity: 1;
   transition: 2s;
 }
@@ -102,9 +109,25 @@
   transition: .5s;
 }
 
+.results__icon_type-trash:hover ~ .results__warning {
+  opacity: 1;
+  transition: 2s;
+}
+
+.results__item-link {
+  text-decoration: none;
+  display: block;
+  height: calc(100% - 272px);
+}
+
 .results__item-content {
   padding: 20px 24px 24px;
   background-color: white;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
 }
 
 .results__item-date {
@@ -123,6 +146,7 @@
   line-height: 30px;
   color: #1A1B22;
   margin-bottom: 1rem;
+  /*overflow: hidden;*/
 }
 
 .results__item-text {
@@ -137,6 +161,7 @@
 }
 
 .results__item-source {
+  margin-top: auto;
   font-family: 'Roboto Slab', serif;
   font-weight: 400;
   font-size: 16px;
@@ -147,6 +172,7 @@
 }
 
 .results__expand {
+  display: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -158,9 +184,12 @@
   border-radius: 80px;
   width: 288px;
   height: 64px;
-  display: block;
   margin: 0 auto;
   cursor: pointer;
+}
+
+.results__expand_state-shown {
+  display: block;
 }
 
 .results__expand:hover {
@@ -185,6 +214,11 @@
   .results__item-cover {
     height: 240px;
   }
+
+  .results__item-link {
+    height: calc(100% - 240px);
+  }
+
   .results__item-title {
     font-size: 22px;
     line-height: 24px;
@@ -206,6 +240,10 @@
 
   .results__item-cover {
     height: 224px;
+  }
+
+  .results__item-link {
+    height: calc(100% - 224px);
   }
 
   .results__subtitle {

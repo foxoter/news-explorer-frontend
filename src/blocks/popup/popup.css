@@ -5,10 +5,13 @@
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100vh;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  display: none;
+}
+
+.popup__state-open {
+  display: flex;
 }
 
 .popup__content {
@@ -96,6 +99,13 @@
   top: 220px;
 }
 
+.popup__error_type-server {
+  font-size: 11px;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .popup__input:focus {
   outline: none;
   border-bottom: 1px solid rgb(0, 0, 0);
@@ -104,6 +114,7 @@
 
 .popup__btn {
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .popup__text {

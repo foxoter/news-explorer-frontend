@@ -6,6 +6,11 @@
   background: #F5F6F7;
   padding: 80px 7% 80px;
   box-sizing: border-box;
+  display: none;
+}
+
+.results_state-shown {
+  display: block;
 }
 
 @media screen and (max-width: 768px) {
