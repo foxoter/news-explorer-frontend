@@ -1,5 +1,5 @@
 # News explorer Frontend
-Building a News Explorer App using HTML and CSS. You can search for keywords and get the latest news on the topic.
+Building a News Explorer App using HTML, CSS and JS. You can search for keywords and get the latest news on the topic.
 
 ### Technologies & Features
 * Main stack: HTML, CSS, JS, Webpack 5 (and all the necessary plugins).
